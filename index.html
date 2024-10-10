@@ -3,22 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Credit Clicker</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Social Credit Counter</title>
+    <style>
+        h1 {
+            color: yellow;
+        }
+        p {
+            color: green;
+        }
+        body {
+            text-align: center;
+         
+        }
+        .flying-emoji {
+            position: absolute;
+            font-size: 2em;
+            transition: transform 2s linear;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Social Credit Clicker</h1>
-        <p>Current Social Credit Score: <span id="credit">0</span></p>
-        <button id="clickButton">Earn Social Credit</button>
-        <h2>Upgrades</h2>
-        <div id="upgrades">
-            <button id="upgrade1">Hire Volunteer (+1 per click) - Cost: 10</button><br>
-            <button id="upgrade2">Patrol Neighborhood (+5 per click) - Cost: 50</button><br>
-            <button id="upgrade3">Organize Community Event (+50 per second) - Cost: 1000</button><br>
-        </div>
-        <p>Auto Earn Rate: <span id="rate">0</span> per second</p>
-    </div>
-    <script src="script.js"></script>
+
+<p> I LOVE THE CCP </p>
+<img src="https://www.uschina.org/sites/default/files/202210/xijinping.jpg" alt="Xi Jinping">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png" alt="Flag of China">
+
+<h1>Morgan Li</h1>
+<p> I enjoy doing competition math. </p>
+
+<p id="credit-label">Social Credit: 0</p>
+<button id="increase-credit-button">Increase Credit</button>
+<div id="emoji-container"></div>
+
+<script>
+let credit = 0;
+
+document.getElementById("increase-credit-button").onclick = function() {
+    credit++;
+    document.getElementById("credit-label").innerText = "Social Credit: " + credit;
+    
+    if (credit % 10 === 0) {
+        displayFlyingEmoji("&#128293;"); // Fire emoji
+    }
+    if (credit % 50 === 0) {
+        displayEmoji("&#128526;"); // Chill emoji
+    }
+    if (credit % 100 === 0) {
+        displayEmoji("&#129314;"); // Sheesh emoji
+    }
+};
+
+function displayFlyingEmoji(emoji) {
+    const flyingEmoji = document.createElement("span");
+    flyingEmoji.innerHTML = emoji; // Use innerHTML for HTML entities
+    flyingEmoji.classList.add("flying-emoji");
+    
+    // Set a random starting position for the emoji
+    const randomX = Math.random() * (window.innerWidth - 50); // Ensure it fits within the screen
+    flyingEmoji.style.left = `${randomX}px`;
+    flyingEmoji.style.bottom = "0px"; // Start from the bottom
+    
+    document.getElementById("emoji-container").appendChild(flyingEmoji);
+    
+    // Animate the emoji flying up
+    setTimeout(() => {
+        flyingEmoji.style.transform = `translateY(-100vh)`; // Fly upwards
+    }, 10); // Delay to ensure the emoji is added before the animation starts
+
+    // Remove the emoji after flying across the screen
+    setTimeout(() => {
+        flyingEmoji.remove();
+    }, 2000); // Duration matches the CSS transition time
+}
+
+function displayEmoji(emoji) {
+    const staticEmoji = document.createElement("span");
+    staticEmoji.innerHTML = emoji; // Use innerHTML for HTML entities
+    staticEmoji.style.fontSize = "2em";
+    staticEmoji.style.margin = "0 5px";
+    
+    document.getElementById("emoji-container").appendChild(staticEmoji);
+}
+</script>
+
 </body>
 </html>
+
+
+--
+Morgan Li
+Tenth Grade
+HSN Class of 2027
